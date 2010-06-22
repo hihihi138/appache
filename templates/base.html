@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+
+This is the base template.
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>{% block title %}优酷精选{% endblock %}</title>
+<meta http-equiv="Content-Language" content="zh-CN"/>
+<meta name="keywords" content="{% block metaKeywordsContent %}{% endblock %}" />
+<meta name="description" content="{% block metaDescriptionContent %}{% endblock %}" />
+<link href="/media/default.css" rel="stylesheet" type="text/css" charset=”utf-8″ />
+</head>
+<body>
+<!-- start header -->
+<div id="header">
+	<div id="logo">
+		<a href="/"><img src="/media/images/logo.jpg"></a>
+	</div>
+	<div id="menu">
+		<ul>
+            {% block menuMainPage %}<li><a href="/">主页</a></li>{% endblock %}
+            {% block menuBlog %}<li><a href="/">标签</a></li>{% endblock %}
+            {% block menuTopList %}<li><a href="/">排行榜</a></li>{% endblock %}
+            {% block menuPostVideo %}<li><a href="/">投递视频</a></li>{% endblock %}
+            {% block menuAboutUs %}<li><a href="/log/">建站日志</a></li>{% endblock %}
+        </ul>
+	</div>
+</div>
+<!-- end header -->
+<!-- start page -->
+<div id="page">
+	<div id="cse" style="width:68%;"></div>
+	<!-- start gcs -->
+	<div id="cse-search-form" style="width: 20%;">Loading</div>
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+	  google.load('search', '1', {language : 'zh-CN'});
+	  google.setOnLoadCallback(function() {
+	    var customSearchControl = new google.search.CustomSearchControl('014162507641403348319:0ahrlt_aohe');
+	    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+	    var options = new google.search.DrawOptions();
+	    options.setSearchFormRoot('cse-search-form');
+	    
+	    options.setAutoComplete(true);
+	    customSearchControl.draw('cse', options);
+	  }, true);
+	</script>
+	<link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+	<!-- end gcs -->
+	<!-- start sidebar -->
+    {% block sidebar %}
+    {% endblock %}
+	<!-- end sidebar -->
+	
+	
+    
+    <!-- start content -->
+    {% block content %}
+    {% endblock %}
+    <!-- end content -->
+    
+    <!-- start video_comment -->
+    {% block video_comment %}
+    {% endblock %}
+    <!-- end video_comment -->
+    
+    <!-- start page_index -->
+    {% block page_index %}
+    {% endblock %}
+    <!-- end page_index -->
+
+	<br style="clear: both;" />
+</div>
+<!-- end page -->
+<!-- start footer -->
+<div id="footer">
+	<p class="links">
+		<a href="#" class="rss" title="RSS订阅地址">RSS地址 (<abbr title="Really Simple Syndication">RSS</abbr>)</a>
+		&nbsp;&nbsp;&nbsp;
+		<a href="#" class="rss" title="订阅到Google Reader">订阅到Google Reader (<abbr title="Really Simple Syndication">RSS</abbr>)</a>
+		&nbsp;&nbsp;&nbsp;
+		<a href="http://validator.w3.org/check/referer" class="xhtml" title="This page validates as XHTML">Valid <abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
+		&nbsp;&nbsp;&nbsp;
+		<a href="http://jigsaw.w3.org/css-validator/check/referer" class="css" title="This page validates as CSS">Valid <abbr title="Cascading Style Sheets">CSS</abbr></a>
+	</p>
+	<p class="legal">
+		&copy;2010 Muer&Betty. All Rights Reserved.
+		&nbsp;&nbsp;&bull;&nbsp;&nbsp;
+		Design by <a href="http://muerblog.appspot.com/">Muer</a>
+		&nbsp;&nbsp;&bull;&nbsp;&nbsp;
+		Icons by <a href="http://www.douban.com/people/Pinocchios/">Betty</a>. </p>
+</div>
+<!-- end footer -->
+</body>
+</html>
+

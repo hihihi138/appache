@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}{{ video.title }} - 优酷精选{% endblock %}
+{% block metaKeywordsContent %}{{ video.tags }}{% endblock %}
+{% block metaDescriptionContent %}{{ video.title }}{% endblock %}
+
+{% block content %}
+    <div id="content">
+        <div class="post">
+            {% include "includes/video.html" %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block video_comment %}
+<div id="comment">
+    {% load comments %}
+    {% get_comment_list for video as comment_list %}
+    {% for comment in comment_list %}
+    <div class="comment">
+        <div class="comment_info">
+        	{% load timezone %}
+            <small>{{ comment.user_name }}于 {{ comment.submit_date|timezone:8|date:"Y-m-d H:i:s" }} 站在{{ forloop.counter }}楼说:</small>
+        </div>
+        <div class="comment_con">
+            <p>{{ comment.comment }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    {% get_comment_form for video as form_list %}
+    <form action="{% comment_form_target %}" method="post">{% csrf_token %}
+        {% for field in form_list %}
+            {% if field.is_hidden %}
+                {{ field }}
+            {% else %}
+                {% if field.errors %}{{ field.errors }}{% endif %}
+                <p
+                    {% if field.errors %} class="error"{% endif %}
+                    {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+                    {{ field.label_tag }} {{ field }}
+                </p>
+            {% endif %}
+        {% endfor %}
+        <input type="hidden" name="next" value="/video/{{ video.vid }}" />
+        <input type="submit" name="submit" class="submit-post" value="提交">
+    </form>
+</div>
+{% endblock %}
