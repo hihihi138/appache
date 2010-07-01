@@ -7,4 +7,4 @@
 </div>
     {% load comments %}
     {% get_comment_count for video as comment_count %}
-    <p><small>分类:<a href="/category/{{ video.category }}/">{{ video.get_category_display }} </a> 标签:{% for tag in video.tags.split %}<a href="#">{{ tag }} </a>{% endfor %} 评论(<a href="/video/{{video.vid}}/">{{ comment_count }}</a>)</small></p>
+    <p><small>分类:<a href="/category/{{ video.category }}/">{{ video.get_category_display }} </a> 标签:{% for tag in video.tags.split %}<a href="/tag/{{ tag }}/">{{ tag }} </a>{% endfor %} 评论(<a href="/video/{{video.vid}}/">{{ comment_count }}</a>)</small></p>

@@ -11,13 +11,13 @@ This is the base template.
 <meta http-equiv="Content-Language" content="zh-CN"/>
 <meta name="keywords" content="{% block metaKeywordsContent %}{% endblock %}" />
 <meta name="description" content="{% block metaDescriptionContent %}{% endblock %}" />
-<link href="/media/default.css" rel="stylesheet" type="text/css" charset=”utf-8″ />
+<link href="/static/default.css" rel="stylesheet" type="text/css" charset=”utf-8″ />
 </head>
 <body>
 <!-- start header -->
 <div id="header">
 	<div id="logo">
-		<a href="/"><img src="/media/images/logo.jpg"></a>
+		<a href="/"><img src="/static/images/logo.jpg"></a>
 	</div>
 	<div id="menu">
 		<ul>
@@ -25,7 +25,7 @@ This is the base template.
             {% block menuBlog %}<li><a href="/">标签</a></li>{% endblock %}
             {% block menuTopList %}<li><a href="/">排行榜</a></li>{% endblock %}
             {% block menuPostVideo %}<li><a href="/">投递视频</a></li>{% endblock %}
-            {% block menuAboutUs %}<li><a href="/log/">建站日志</a></li>{% endblock %}
+            {% block menuAboutUs %}<li><a href="/log/">关于本站</a></li>{% endblock %}
         </ul>
 	</div>
 </div>

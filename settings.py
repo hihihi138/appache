@@ -1,4 +1,5 @@
-# Django settings for mysite project.
+# Django settings for bestyouku project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -10,8 +11,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = '/Library/WebServer/Documents/bestyouku/bestyouku.db'             # Or path to database file if using sqlite3.
-#DATABASE_NAME = '/home/hihihi138/Dropbox/Test/mysite/mysite.db'
+DATABASE_NAME = os.path.join(os.path.dirname(__file__), 'bestyouku.db')             # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -26,7 +26,7 @@ TIME_ZONE = 'ASIA/SHANGHAI'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-cn'
 
 SITE_ID = 1
 
@@ -36,8 +36,8 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/Library/WebServer/Documents/bestyouku/static/'
-STATIC_PATH='/Library/WebServer/Documents/bestyouku/static/'
+MEDIA_ROOT = os.path.dirname(__file__)
+STATIC_PATH= os.path.join(os.path.dirname(__file__), 'static')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -69,10 +69,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
 )
 
-ROOT_URLCONF = 'bestyouku.urls'
+ROOT_URLCONF = 'appache.urls'
 
-import os
-TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
+TEMPLATE_DIRS = os.path.join(os.path.dirname(__file__), 'templates')
 
 INSTALLED_APPS = (
     'django.contrib.auth',
