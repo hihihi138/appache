@@ -5,31 +5,6 @@
 
 {% block menuMainPage %}<li class="current_page_item"><a href="#">主页</a></li>{% endblock %}
 
-{% block sidebar %}
-	<div id="sidebar">
-    	<ul>
-            <li>
-				<h2>最新评论</h2>
-				<ul>
-					{% for comment in comments %}
-                    <li><a href="/video/{{ comment.content_object.vid }}">{{ comment.comment }}</a></li>
-                    {% endfor %}
-				</ul>
-			</li>
-            {% if categories %}
-            <li>
-				<h2>视频分类</h2>
-				<ul>
-					{% for category in categories %}
-                    <li><a href="/category/{{ category.0 }}">{{ category.1 }}</a></li>
-                    {% endfor %}
-				</ul>
-			</li>
-            {% endif %}
-		</ul>
-	</div>
-{% endblock %}
-
 {% block content %}
     <!-- start content -->
     <div id="content">
@@ -40,6 +15,29 @@
         {% endfor %}
     </div>
     <!-- end content -->
+{% endblock %}
+
+{% block sidebar %}
+	<div id="sidebar">
+		<div class="sidebar">
+			<h2>最新评论</h2>
+			<ul>
+				{% for comment in comments %}
+                   <li><a href="/video/{{ comment.content_object.vid }}">{{ comment.comment }}</a></li>
+            	{% endfor %}
+			</ul>
+		</div>
+        {% if categories %}
+        <div class="sidebar">
+			<h2>视频分类</h2>
+			<ul>
+			{% for category in categories %}
+            	<li><a href="/category/{{ category.0 }}">{{ category.1 }}</a></li>
+            {% endfor %}
+			</ul>
+		</div>
+        {% endif %}
+	</div>
 {% endblock %}
 
 {% block page_index %}
