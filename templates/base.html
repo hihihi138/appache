@@ -16,41 +16,42 @@ This is the base template.
 <body>
 <!-- start header -->
 <div id="header">
-	<div id="logo">
-		<a href="/"><img src="/static/images/logo.jpg"></a>
-	</div>
-	<div id="menu">
-		<ul>
-            {% block menuMainPage %}<li><a href="/">主页</a></li>{% endblock %}
-            {% block menuBlog %}<li><a href="/">标签</a></li>{% endblock %}
-            {% block menuTopList %}<li><a href="/">排行榜</a></li>{% endblock %}
-            {% block menuPostVideo %}<li><a href="/">投递视频</a></li>{% endblock %}
-            {% block menuAboutUs %}<li><a href="/log/">关于本站</a></li>{% endblock %}
-        </ul>
+	<div id="headercenter">
+		<div id="logo">
+			<a href="/"><img src="/static/images/logo.jpg"></a>
+		</div>
+		<div id="menu">
+			<ul>
+	            {% block menuMainPage %}<li><a href="/">主页</a></li>{% endblock %}
+	            {% block menuBlog %}<li><a href="/">标签</a></li>{% endblock %}
+	            {% block menuTopList %}<li><a href="/">排行榜</a></li>{% endblock %}
+	            {% block menuPostVideo %}<li><a href="/">投递视频</a></li>{% endblock %}
+	            {% block menuAboutUs %}<li><a href="/log/">关于本站</a></li>{% endblock %}
+	        </ul>
+		</div>
+		<!-- start gcs -->
+		<div id="cse-search-form" style="width: 20%;">Loading</div>
+		<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+		<script type="text/javascript">
+		  google.load('search', '1', {language : 'zh-CN'});
+		  google.setOnLoadCallback(function() {
+		    var customSearchControl = new google.search.CustomSearchControl('014162507641403348319:0ahrlt_aohe');
+		    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+		    var options = new google.search.DrawOptions();
+		    options.setSearchFormRoot('cse-search-form');
+		    
+		    options.setAutoComplete(true);
+		    customSearchControl.draw('cse', options);
+		  }, true);
+		</script>
+		<!-- end gcs -->
 	</div>
 </div>
 <!-- end header -->
 <!-- start page -->
-<div id="page">
-	<!-- start gcs -->
-	<div id="cse"></div>
-	<div id="cse-search-form" style="width: 20%;">Loading</div>
-	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript">
-	  google.load('search', '1', {language : 'zh-CN'});
-	  google.setOnLoadCallback(function() {
-	    var customSearchControl = new google.search.CustomSearchControl('014162507641403348319:0ahrlt_aohe');
-	    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-	    var options = new google.search.DrawOptions();
-	    options.setSearchFormRoot('cse-search-form');
-	    
-	    options.setAutoComplete(true);
-	    customSearchControl.draw('cse', options);
-	  }, true);
-	</script>
-	<!-- end gcs -->
-   
+<div id="page"> 
     <!-- start content -->
+    <div id="cse"></div>
     {% block content %}
     {% endblock %}
     <!-- end content -->
@@ -75,21 +76,14 @@ This is the base template.
 <!-- end page -->
 <!-- start footer -->
 <div id="footer">
-	<p class="links">
-		<a href="#" class="rss" title="RSS订阅地址">RSS地址 (<abbr title="Really Simple Syndication">RSS</abbr>)</a>
-		&nbsp;&nbsp;&nbsp;
-		<a href="#" class="rss" title="订阅到Google Reader">订阅到Google Reader (<abbr title="Really Simple Syndication">RSS</abbr>)</a>
-		&nbsp;&nbsp;&nbsp;
-		<a href="http://validator.w3.org/check/referer" class="xhtml" title="This page validates as XHTML">Valid <abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
-		&nbsp;&nbsp;&nbsp;
-		<a href="http://jigsaw.w3.org/css-validator/check/referer" class="css" title="This page validates as CSS">Valid <abbr title="Cascading Style Sheets">CSS</abbr></a>
-	</p>
 	<p class="legal">
 		&copy;2010 Muer&Betty. All Rights Reserved.
 		&nbsp;&nbsp;&bull;&nbsp;&nbsp;
 		Design by <a href="http://muerblog.appspot.com/">Muer</a>
 		&nbsp;&nbsp;&bull;&nbsp;&nbsp;
-		Icons by <a href="http://www.douban.com/people/Pinocchios/">Betty</a>. </p>
+		Icons by <a href="http://www.douban.com/people/Pinocchios/">Betty</a>
+		&nbsp;&nbsp;&bull;&nbsp;&nbsp;
+		Powered by <a href="http://www.djangoproject.com/">Django</a></p>
 </div>
 <!-- end footer -->
 </body>
