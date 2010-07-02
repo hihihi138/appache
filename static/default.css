@@ -139,14 +139,22 @@ a:hover {
     padding-right: 50px;
 }
 #cse {
-	width: 650px;
-	float: left
+	width: 638px;
+	float: left;
 }
 .gsc-control-cse {
     font-family: "Trebuchet MS", sans-serif;
     border-color: #A3E0F6;
     background-color: #F3FbFE;
   }
+.gsc-resultsbox-visible{
+	-moz-box-shadow: #33bbed 0 0 10px;
+	-webkit-box-shadow: #33bbed 0 0 10px;
+	border:1px solid #33BBED;
+}
+.gsc-adBlock{
+	height: 1px;	
+}
 input.gsc-input {
   border-color: #A3E0F6;
 }
@@ -249,8 +257,9 @@ a.gsc-trailing-more-results:link {
 
 .post {
 	margin-bottom: 20px;
-	-moz-box-shadow: #33bbed 0 0 5px;
-	-webkit-box-shadow: #33bbed 0 0 5px;
+	-moz-box-shadow: #33bbed 0 0 10px;
+	-webkit-box-shadow: #33bbed 0 0 10px;
+	border:1px solid #33BBED;
 }
 
 .post .title {
@@ -332,8 +341,9 @@ a.gsc-trailing-more-results:link {
 
 #sidebar .sidebar {
 	margin-bottom: 20px;
-	-moz-box-shadow: #33bbed 0 0 5px;
-	-webkit-box-shadow: #33bbed 0 0 5px;
+	-moz-box-shadow: #33bbed 0 0 10px;
+	-webkit-box-shadow: #33bbed 0 0 10px;
+	border:1px solid #33BBED;
 }
 
 #sidebar ul {
@@ -357,49 +367,28 @@ a.gsc-trailing-more-results:link {
 	color: #302D26;
 }
 
-/* Categories */
-
-#sidebar #categories li {
-	background: url(images/img12.gif) no-repeat left center;
+/* Pager */
+.pager {
+	padding-left: 200px;
+	margin-bottom: 15px;
 }
-
-/* Calendar */
-
-#calendar_wrap {
-	padding: 0 30px 40px 30px;
-}
-
-#calendar table {
-	width: 100%;
-	text-align: center;
-}
-
-#calendar thead {
-	background: #F1F1F1;
-}
-
-#calendar tbody td {
-	border: 1px solid #F1F1F1;
-}
-
-#calendar #prev {
-	text-align: left;
-}
-
-#calendar #next {
-	text-align: right;
-}
-
-#calendar tfoot a {
-	text-decoration: none;
+.pager a, .pager .current {
+	display: block;
+    float: left;
+	border: 1px solid #F3FBFE;
+	padding: 0.2em 0.5em;
 	font-weight: bold;
+	margin-right: 0.1em;
 }
-
-#calendar #today {
-	background: #FFF3A7;
-	border: 1px solid #EB1400;
-	font-weight: bold;
-	color: #EB1400
+.pager .current {
+	color: #F3FBFE;
+	background: #A0E0F0;	
+}
+.pager a{
+	color: #51AECA;
+}
+.pager a:hover {
+    border: 1px solid #A0E0F0;
 }
 
 /* Footer */

@@ -13,7 +13,8 @@
                 {% include "includes/video.html" %}
             </div>
         {% endfor %}
-    </div>
+		{% if is_paginated %}{% load paginator %}{% paginator 3 %}{% endif %}
+	</div>
     <!-- end content -->
 {% endblock %}
 
@@ -23,7 +24,8 @@
 			<h2>最新评论</h2>
 			<ul>
 				{% for comment in comments %}
-                   <li><a href="/video/{{ comment.content_object.vid }}">{{ comment.comment }}</a></li>
+				{% load truncatehanzi %}
+                   <li><a href="/video/{{ comment.content_object.vid }}">{{ comment.comment|truncatehanzi:"18" }}</a></li>
             	{% endfor %}
 			</ul>
 		</div>
@@ -38,8 +40,4 @@
 		</div>
         {% endif %}
 	</div>
-{% endblock %}
-
-{% block page_index %}
-{% if is_paginated %}{% load paginator %}{% paginator 3 %}{% endif %}
 {% endblock %}
