@@ -9,7 +9,7 @@ Released for free under a Creative Commons Attribution 2.5 License
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #d7f3ff;
+	background: #d7f3ff url(images/img01.jpg) repeat-x;
    	text-align: justify;
 	font: 15px Arial, Helvetica, sans-serif;
 	color: #626262;
@@ -55,7 +55,6 @@ p: {
 
 #header {
 	padding: 0 0 60px 0;
-	background: #0085B3;
 	margin: 0 0 20px 0;
 }
 
