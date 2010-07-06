@@ -16,19 +16,22 @@
 <div id="comment">
     {% load comments %}
     {% get_comment_list for video as comment_list %}
+    {% get_comment_count for video as comment_count %}
+    {% get_comment_form for video as form_list %}
+    {% if comment_count %}
+    	<h3>已经有{{ comment_count }}条评论了.</h3>
+    {% else %}
+    	<h3>还没有任何评论</h3>
+    {% endif %}
     {% for comment in comment_list %}
     <div class="comment">
-        <div class="comment_info">
-        	{% load timezone %}
-            <small>{{ comment.user_name }}于 {{ comment.submit_date|timezone:8|date:"Y-m-d H:i:s" }} 站在{{ forloop.counter }}楼说:</small>
-        </div>
-        <div class="comment_con">
-            <p>{{ comment.comment }}</p>
-        </div>
+    	
+       	{% load timezone %}
+        <small><a href="#">{{ comment.user_name }}</a>于 {{ comment.submit_date|timezone:8|date:"Y-m-d H:i:s" }} 站在{{ forloop.counter }}楼说:</small>
+        <p>{{ comment.comment }}</p>
     </div>
     {% endfor %}
-    {% get_comment_form for video as form_list %}
-    <form action="{% comment_form_target %}" method="post">{% csrf_token %}
+    <form id="post_comment" action="{% comment_form_target %}" method="post">{% csrf_token %}
         {% for field in form_list %}
             {% if field.is_hidden %}
                 {{ field }}

@@ -3,7 +3,7 @@
 {% block metaKeywordsContent %}优酷,优酷精选,视频,视频分享,在线视频{% endblock %}
 {% block metaDescriptionContent %}每日发布优酷网的精选内容。{% endblock %}
 
-{% block menuMainPage %}<li class="current_page_item"><a href="#">主页</a></li>{% endblock %}
+{% block menuMainPage %}<li class="current_page_item"><a href="/">主页</a></li>{% endblock %}
 
 {% block content %}
     <!-- start content -->
@@ -36,7 +36,7 @@
 			{% for category in categories %}
             	<li><a href="/category/{{ category.0 }}">{{ category.1 }}</a></li>
             {% endfor %}
-			</ul>
+            </ul>
 		</div>
         {% endif %}
 	</div>
