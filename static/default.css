@@ -35,7 +35,8 @@ h2 {
 }
 
 h3 {
-	font-size: 1em;
+	letter-spacing: -1px;
+	font-size: 1.3em;
 }
 
 a {
@@ -54,7 +55,7 @@ p: {
 /* Header */
 
 #header {
-	padding: 0 0 60px 0;
+	padding: 0 0 75px 0;
 	margin: 0 0 20px 0;
 }
 
@@ -114,7 +115,7 @@ p: {
 /* Page */
 
 #page {
-	padding: 20px 10px 10px 0;
+	padding: 10px 10px 10px 0;
 	margin: 0 auto 20px auto;
 	width: 960px;
 	background-color: #F3FBFE;
@@ -158,6 +159,23 @@ input.gsc-search-button {
 .gs-webResult.gs-result a.gs-title:visited,
 .gs-webResult.gs-result a.gs-title:visited b {
   color: #815FA7;
+}
+
+/* User */
+#user {
+	clear: right;
+  	float: right;
+  	line-height: 100%;
+  	padding: 0 20px 0 0;
+}
+
+#activation, #registration, #login, #logout {
+	padding: 20px 20px 0 20px;
+	margin: 0 10px 0 20px;
+	-moz-box-shadow: #33BBED 0 0 10px;
+	-webkit-box-shadow: #33BBED 0 0 10px;
+	border:1px solid #33BBED;
+	background-color:#DAF3FC;
 }
 
 /* Content */

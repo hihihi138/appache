@@ -1,0 +1,7 @@
+Please activate your account in {{ expiration_days }}.
+
+Your activation key is {{ activation_key }}.
+
+Please click the following url to activate. {{ site }}/account/activate/{{ activation_key }}
+
+{{ site }}

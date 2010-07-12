@@ -13,6 +13,14 @@ This is the base template.
 <meta name="description" content="{% block metaDescriptionContent %}{% endblock %}" />
 <link href="/static/default.css" rel="stylesheet" type="text/css" />
 <link href="/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#cse").mouseover(function(){
+	$(".gsc-adBlock").hide()
+	});
+});
+</script>
 </head>
 <body>
 <!-- start header -->
@@ -45,6 +53,13 @@ This is the base template.
 		  }, true);
 		</script>
 		<!-- end gcs -->
+		<div id="user">
+			{% if user.is_authenticated %}
+				<p>{{ user.username }} | <a href="/accounts/logout/">退出</a></p>
+			{% else %}
+				<p><a href="/accounts/login/">登录</a> / <a href="/accounts/register/">注册</a></p>
+			{% endif %}
+		</div>
 	</div>
 </div>
 <!-- end header -->
