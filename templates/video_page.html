@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block video_comment %}
-<div id="comment">
+	<div id="comment">
     {% load comments %}
     {% get_comment_list for video as comment_list %}
     {% get_comment_count for video as comment_count %}
@@ -23,14 +23,49 @@
     {% else %}
     	<h3>还没有任何评论</h3>
     {% endif %}
+    
     {% for comment in comment_list %}
     <div class="comment">
-    	
        	{% load timezone %}
         <small><a href="#">{{ comment.user_name }}</a>于 {{ comment.submit_date|timezone:8|date:"Y-m-d H:i:s" }} 站在{{ forloop.counter }}楼说:</small>
         <p>{{ comment.comment }}</p>
     </div>
     {% endfor %}
+    <!--
+    <form id="post_comment" action="{% comment_form_target %}" method="post">{% csrf_token %}
+        {% for field in form_list %}
+            {% if field.is_hidden %}
+                {{ field }}
+            {% endif %}
+        {% endfor %}
+       	<p><lable for="id_name">{{ form_list.name.label_tag }}:</label>
+       	{% if form_list.name.errors %}
+       		<span class="errors">{{ form_list.name.errors.as_text }}</span>
+       	{% endif %}
+       	<br />
+       	{{ form_list.name }}</p>
+       	<p><lable for="id_email">{{ form_list.email.label_tag }}:</label>
+       	{% if form_list.email.errors %}
+       		<span class="errors">{{ form_list.email.errors.as_text }}</span>
+       	{% endif %}
+       	<br />
+       	{{ form_list.email }}</p>
+       	<p><lable for="id_url">{{ form_list.url.label_tag }}:</label>
+       	{% if form_list.url.errors %}
+       		<span class="errors">{{ form_list.url.errors.as_text }}</span>
+       	{% endif %}
+       	<br />
+       	{{ form_list.url }}</p>
+       	<p><lable for="id_comment">{{ form_list.comment.label_tag }}:</label>
+       	{% if form_list.comment.errors %}
+       		<span class="errors">{{ form_list.comment.errors.as_text }}</span>
+       	{% endif %}
+       	<br />
+       	{{ form_list.comment }}</p>
+        <input type="hidden" name="next" value="/video/{{ video.vid }}/" />
+        <input type="submit" name="submit" class="submit-post" value="提交">
+    </form>
+    -->
     <form id="post_comment" action="{% comment_form_target %}" method="post">{% csrf_token %}
         {% for field in form_list %}
             {% if field.is_hidden %}
@@ -47,5 +82,5 @@
         <input type="hidden" name="next" value="/video/{{ video.vid }}" />
         <input type="submit" name="submit" class="submit-post" value="提交">
     </form>
-</div>
+	</div>
 {% endblock %}

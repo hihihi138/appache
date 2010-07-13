@@ -1,7 +1,7 @@
-Please activate your account in {{ expiration_days }}.
+谢谢您注册优酷精选网站!  http://{{ site }}
 
-Your activation key is {{ activation_key }}.
+请在{{ expiration_days }}天内激活您的帐号.
 
-Please click the following url to activate. {{ site }}/account/activate/{{ activation_key }}
+点击以下链接去激活页面.
 
-{{ site }}
+http://{{ site }}/accounts/activate/{{ activation_key }}

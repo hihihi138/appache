@@ -28,7 +28,7 @@ TIME_ZONE = 'ASIA/SHANGHAI'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'zh-cn'
 
-SITE_ID = 1
+SITE_ID = 2
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -86,3 +86,10 @@ INSTALLED_APPS = (
 )
 
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
+
+# Email Host
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'bestyouku520@gmail.com'
+EMAIL_HOST_PASSWORD = 'youkujingxuan'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

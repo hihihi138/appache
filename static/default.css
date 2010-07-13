@@ -165,7 +165,7 @@ input.gsc-search-button {
 #user {
 	clear: right;
   	float: right;
-  	line-height: 100%;
+  	line-height: 30%;
   	padding: 0 20px 0 0;
 }
 
@@ -258,7 +258,7 @@ input.gsc-search-button {
 	color: #A0A0A0;
 }
 #post_comment {
-	margin: 50px 20px 20px 20px;
+	margin: 10px 20px 20px 20px;
 }
 
 /* Sidebar */
@@ -344,4 +344,10 @@ input.gsc-search-button {
 
 #footer a:hover {
 	color: #FFFFFF;
+}
+
+/* Errors */
+
+.errors {
+	color: #FF3300;
 }
