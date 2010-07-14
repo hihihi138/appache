@@ -35,6 +35,7 @@ $(document).ready(function(){
 	            {% block menuTopList %}<li><a href="/">热门排行</a></li>{% endblock %}
 	            {% block menuPostVideo %}<li><a href="/">投递视频</a></li>{% endblock %}
 	            {% block menuAboutUs %}<li><a href="/log/">关于本站</a></li>{% endblock %}
+				<li><a href="/rss/" target="view_window"><img src="/static/images/img18.gif"></a></li>
 	        </ul>
 		</div>
 		<!-- start gcs -->
@@ -53,12 +54,14 @@ $(document).ready(function(){
 		  }, true);
 		</script>
 		<!-- end gcs -->
-		<div id="user">
-			{% if user.is_authenticated %}
-				<p>{{ user.username }} | <a href="/accounts/logout/">退出</a></p>
-			{% else %}
-				<p><a href="/accounts/login/">登录</a> / <a href="/accounts/register/">注册</a></p>
-			{% endif %}
+		<div id="toolbar">
+			<div id="authentication">
+				{% if user.is_authenticated %}
+					<p>{{ user.username }} | <a href="/accounts/logout/">退出</a></p>
+				{% else %}
+					<p><a href="/accounts/login/">登录</a> / <a href="/accounts/register/">注册</a></p>
+				{% endif %}
+			</div>
 		</div>
 	</div>
 </div>

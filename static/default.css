@@ -67,6 +67,8 @@ p: {
 #logo {
     float: left;
     padding-left: 5px;
+    color: #2583C2;
+    backgroundcolor: #2583C2;
 }
 
 #menu {
@@ -99,6 +101,11 @@ p: {
 	font-size: 14px;
 	color: #BABABA;
 	//border-top: 5px solid #3399CC;
+}
+
+#menu img {
+	float: left;
+	color: #2583C2;
 }
 
 #menu a:hover {
@@ -161,8 +168,8 @@ input.gsc-search-button {
   color: #815FA7;
 }
 
-/* User */
-#user {
+/* Toolbar */
+#toolbar {
 	clear: right;
   	float: right;
   	line-height: 30%;
@@ -176,6 +183,10 @@ input.gsc-search-button {
 	-webkit-box-shadow: #33BBED 0 0 10px;
 	border:1px solid #33BBED;
 	background-color:#DAF3FC;
+}
+
+#authentication {
+	float: right;
 }
 
 /* Content */

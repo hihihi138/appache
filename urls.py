@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from youku.feeds import LatestVideosFeed
 
 from django.contrib import admin
 admin.autodiscover()
@@ -14,9 +15,10 @@ urlpatterns = patterns('',
     (r'^comments/', include('django.contrib.comments.urls')),
     (r'^category/([^/]+)/$', 'youku.views.category_page'),
     (r'^tag/([^/]+)/$', 'youku.views.tag_page'),
+    (r'^rss/$', LatestVideosFeed()),
     # admin related
     (r'^admin/', include(admin.site.urls)),
-	(r'^accounts/',  include('registration.backends.default.urls')),
+    (r'^accounts/',  include('registration.backends.default.urls')),
     # static files
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': os.path.dirname(os.path.abspath(__file__)) + '/static/'}),
 )
