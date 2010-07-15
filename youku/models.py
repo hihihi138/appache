@@ -48,6 +48,16 @@ class Log(models.Model):
     log_time = models.DateTimeField(default=datetime.now())
     
     def __unicode__(self):
-	return self.log_title
+		return self.log_title
     class Meta:
-	ordering = ['-log_time']
+		ordering = ['-log_time']
+
+class PostedVideo(models.Model):
+	title = models.CharField(max_length=100, verbose_name='题目')
+	url = models.URLField(verbose_name='优酷网址')
+	post_date = models.DateTimeField(default=datetime.now(), verbose_name='发布时间')
+	tags = models.CharField(max_length=100, verbose_name='标签')
+	reason = models.TextField(verbose_name='推荐语')
+	
+	def __unicode__(self):
+		return self.title

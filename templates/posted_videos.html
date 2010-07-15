@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block metaKeywordsTitle %}用户投递的视频{% endblock %}
+{% block metaKeywordsContent %}优酷,优酷精选,视频,视频分享,在线视频{% endblock %}
+{% block metaDescriptionContent %}用户投递的视频。{% endblock %}
+
+{% block menuAboutUs %}<li class="current_page_item"><a href="#">关于本站</a></li>{% endblock %}
+
+{% block content %}
+    <!-- start content -->
+    {% if user.is_staff %}
+    <div id="content">
+        {% for video in object_list %}
+            <div class="post">
+                <div class="title">
+                    <h2>{{ video.title }}</h2>
+                    <p>标签: {{ video.tags }}</p>
+                    <p>地址: {{ video.url }}</p>
+                    <p>视频看点: {{ video.url }}</p>
+                    <p>投递时间: {{ video.post_date }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    	<div class="article">
+    	<h3>管理员页面</h3>
+    	<p>对不起, 您没有权限访问此页面.</p>
+    	</div>
+    {% endif %}
+    <!-- end content -->
+{% endblock %}
+
+{% block page_index %}
+{% if is_paginated %}{% load paginator %}{% paginator 3 %}{% endif %}
+{% endblock %}
+

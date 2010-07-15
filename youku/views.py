@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response
-from youku.models import Video, Log, User
+from youku.models import Video, Log, User, PostedVideo
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from datetime import datetime
 from django.views.generic.list_detail import object_list
 from django.template import RequestContext
 from django.contrib.comments.models import Comment
 from tagging.views import tagged_object_list
+from youku.forms import PostVideoForm
 
 def video_list_page(request):
     videos = Video.objects.all()
@@ -33,3 +34,22 @@ def tag_page(request, tag):
 def log_page(request):
     logs = Log.objects.all()
     return object_list(request, template_name='upgrade_log.html', queryset=logs, paginate_by=10)
+
+def post_video(request):
+	if request.method == 'POST':
+		form = PostVideoForm(request.POST)
+		if form.is_valid():
+			cd = form.cleaned_data
+			pv = PostedVideo(title=cd['title'], url=cd['url'], tags=cd['tags'], reason=cd['reason'],)
+			pv.save()
+			return HttpResponseRedirect('/post/thanks/')
+	else:
+		form = PostVideoForm()
+	return render_to_response('post_video.html', {'form': form}, context_instance=RequestContext(request))
+
+def posted_videos(request):
+    videos = PostedVideo.objects.all()
+    return object_list(request, template_name='posted_videos.html', queryset=videos, paginate_by=10)
+	
+def post_thanks(request):
+	return render_to_response('post_thanks.html')
