@@ -308,6 +308,28 @@ input.gsc-search-button {
 	color: #302D26;
 }
 
+.tag_cloud {
+	padding: 15px 25px 20px 20px;
+}
+.tag-1 {
+	font-size: 12px;
+}
+.tag-2 {
+	font-size: 14px;
+}
+.tag-3 {
+	font-size: 16px;
+}
+.tag-4 {
+	font-size: 18px;
+}
+.tag-5 {
+	font-size: 20px;
+}
+.tag-6 {
+	font-size: 22px;
+}
+
 /* Pager */
 .pager {
 	padding-left: 200px;
@@ -361,4 +383,32 @@ input.gsc-search-button {
 
 .errors {
 	color: #FF3300;
+}
+
+/* test */
+
+.new {
+    text-align: center;
+    border: 1px solid grey;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+.list {
+    border: 1px solid grey;
+}
+.list h2 {
+    text-align: center;
+}
+.detail .text {
+    text-align: center;
+}
+.detail textarea {
+    margin-top: 1em;
+    width: 100%;
+    height: 300px;
+}
+.detail .submit {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
 }

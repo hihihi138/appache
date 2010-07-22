@@ -10,9 +10,7 @@
             {% include "includes/video.html" %}
         </div>
     </div>
-{% endblock %}
-
-{% block video_comment %}
+    
 	<div id="comment">
     {% load comments %}
     {% get_comment_list for video as comment_list %}

@@ -4,6 +4,8 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+ROOT_PATH = os.path.dirname(__file__)
+
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -11,7 +13,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = os.path.join(os.path.dirname(__file__), 'bestyouku.db')             # Or path to database file if using sqlite3.
+DATABASE_NAME = os.path.join(ROOT_PATH, 'bestyouku.db')             # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -36,8 +38,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.dirname(__file__)
-STATIC_PATH= os.path.join(os.path.dirname(__file__), 'static')
+MEDIA_ROOT = os.path.join(ROOT_PATH, 'static')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -71,7 +72,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'appache.urls'
 
-TEMPLATE_DIRS = os.path.join(os.path.dirname(__file__), 'templates')
+TEMPLATE_DIRS = os.path.join(ROOT_PATH, 'templates')
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -83,6 +84,7 @@ INSTALLED_APPS = (
     'youku',
     'tagging',
     'registration',
+    'notes',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.

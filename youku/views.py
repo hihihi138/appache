@@ -29,7 +29,9 @@ def category_page(request, category):
 
 def tag_page(request, tag):
     queryset = Video.objects.all()
-    return tagged_object_list(request, queryset, tag, paginate_by=5, template_name='index.html')
+    comments = Comment.objects.order_by("-submit_date")[0:5]
+    categories = Video.CATEGORY_CHOICES
+    return tagged_object_list(request, queryset, tag, paginate_by=5, template_name='index.html', extra_context={'comments': comments, 'categories': categories})
 
 def log_page(request):
     logs = Log.objects.all()

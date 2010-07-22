@@ -2,6 +2,7 @@
 from django.db import models
 from datetime import datetime
 from tagging.fields import TagField
+from tagging.models import Tag
 
 class User(models.Model):
     name = models.CharField(max_length=30)
@@ -31,6 +32,9 @@ class Video(models.Model):
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, verbose_name='分类')
     tags = TagField()
 
+    def get_tags(self):
+		return Tag.objects.get_for_object(self)
+	
     def get_vid(self):
         from datetime import datetime
         dt_string = datetime.strftime(self.post_date, "%Y%m%d%H%M%S")
