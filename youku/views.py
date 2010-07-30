@@ -12,7 +12,7 @@ from youku.forms import PostVideoForm
 
 def video_list_page(request):
     videos = Video.objects.all()
-    comments = Comment.objects.order_by("-submit_date")[0:5]
+    comments = Comment.objects.order_by("-submit_date")[0:6]
     categories = Video.CATEGORY_CHOICES
     return object_list(request, template_name = 'index.html', queryset = videos, paginate_by=5, extra_context={'comments': comments, 'categories': categories})
 

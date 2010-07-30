@@ -52,6 +52,10 @@ p: {
 	margin: 0;
 }
 
+ul {
+	list-style: none;
+}
+
 /* Header */
 
 #header {
@@ -231,7 +235,7 @@ input.gsc-search-button {
 	font-size:0.9em;
 }
 .post .log_entry{
-	padding: 0 20px 20px 20px;
+	padding: 0 0 10px 0;
 	font-size: 0.9em;
 	text-indent: 2em;	
 }

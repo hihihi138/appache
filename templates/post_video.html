@@ -10,15 +10,15 @@
         <form action="" method="post">{% csrf_token %}
         	<p>
 				<label for="id_title">{{ form.title.label }} </label> {% if form.title.errors %} <span class="errors"> * {{ form.title.errors|join:", " }}</span> {% endif %} <br />
-				{{ form.title }}
+				<input id="id_title" type="text" name="title" size="45" maxlength="100" />
 			</p>
 			<p>
 				<label for="id_url">{{ form.url.label }} </label> {% if form.url.errors %} <span class="errors"> * {{ form.url.errors|join:", " }}</span> {% endif %} <br />
-				{{ form.url }}
+				<input type="text" name="url" id="id_url" size="45" />
 			</p>
 			<p>
 				<label for="id_tags">{{ form.tags.label }} </label> {% if form.tags.errors %} <span class="errors"> * {{ form.tags.errors|join:", " }}</span> {% endif %} <br />
-				{{ form.tags }}
+				<input id="id_tags" type="text" name="tags" size="45" maxlength="100" />
 			</p>
 			<p>
 				<label for="id_reason">{{ form.reason.label }} </label> {% if form.reason.errors %} <span class="errors"> * {{ form.reason.errors|join:", " }}</span> {% endif %} <br />

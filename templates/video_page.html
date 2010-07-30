@@ -25,59 +25,63 @@
     {% for comment in comment_list %}
     <div class="comment">
        	{% load timezone %}
-        <small><a href="#">{{ comment.user_name }}</a>于 {{ comment.submit_date|timezone:8|date:"Y-m-d H:i:s" }} 站在{{ forloop.counter }}楼说:</small>
-        <p>{{ comment.comment }}</p>
+        <small>
+        {% if user.url %}
+        	<a href="#">{{ comment.user_name }}</a>
+        {% else %}
+        	<b style="color: #1692B8">{{ comment.user_name }}</b>
+        {% endif %}
+        于 {{ comment.submit_date|date:"Y-m-d H:i:s" }} 站在{{ forloop.counter }}楼说:
+        </small>
+        <p>{{ comment.comment|linebreaks }}</p>
     </div>
     {% endfor %}
-    <!--
     <form id="post_comment" action="{% comment_form_target %}" method="post">{% csrf_token %}
         {% for field in form_list %}
             {% if field.is_hidden %}
                 {{ field }}
             {% endif %}
         {% endfor %}
-       	<p><lable for="id_name">{{ form_list.name.label_tag }}:</label>
-       	{% if form_list.name.errors %}
-       		<span class="errors">{{ form_list.name.errors.as_text }}</span>
-       	{% endif %}
-       	<br />
-       	{{ form_list.name }}</p>
-       	<p><lable for="id_email">{{ form_list.email.label_tag }}:</label>
-       	{% if form_list.email.errors %}
-       		<span class="errors">{{ form_list.email.errors.as_text }}</span>
-       	{% endif %}
-       	<br />
-       	{{ form_list.email }}</p>
-       	<p><lable for="id_url">{{ form_list.url.label_tag }}:</label>
+        {% if user.is_authenticated %}
+        	<p><lable for="id_name">昵称/网名 (必填)*</label>
+	       	{% if form_list.name.errors %}
+	       		<span class="errors">{{ form_list.name.errors.as_text }}</span>
+	       	{% endif %}
+	       	<br />
+	       	<input type="text" name="name" id="id_name" value={{ user.username }} onfocus="this.value=''" onblur="if (this.value ==''){this.value='{{ user.username }}'}" /></p>
+	       	<p><lable for="id_email">电子邮件 (为您保密)*</label>
+	       	{% if form_list.email.errors %}
+	       		<span class="errors">{{ form_list.email.errors.as_text }}</span>
+	       	{% endif %}
+	       	<br />
+	       	<input type="text" name= "email" id="id_email" size="45" value={{ user.email }} onfocus="this.value=''" onblur="if (this.value ==''){this.value='{{ user.email }}'}" /></p>
+        {% else %}
+	       	<p><lable for="id_name">昵称/网名 (必填)*</label>
+	       	{% if form_list.name.errors %}
+	       		<span class="errors">{{ form_list.name.errors.as_text }}</span>
+	       	{% endif %}
+	       	<br />
+	       	<input type="text" name="name" id="id_name" /></p>
+	       	<p><lable for="id_email">电子邮件 (为您保密)*</label>
+	       	{% if form_list.email.errors %}
+	       		<span class="errors">{{ form_list.email.errors.as_text }}</span>
+	       	{% endif %}
+	       	<br />
+	       	<input type="text" name= "email" id="id_email" size="45" /></p>
+	    {% endif %}
+	    <p><lable for="id_url">个人网址 (可选)</label>
        	{% if form_list.url.errors %}
        		<span class="errors">{{ form_list.url.errors.as_text }}</span>
        	{% endif %}
        	<br />
-       	{{ form_list.url }}</p>
-       	<p><lable for="id_comment">{{ form_list.comment.label_tag }}:</label>
+       	<input type="text" name="url" id="id_url" size="45" /></p>
+       	<p><lable for="id_comment">评论内容 (必填)*</label>
        	{% if form_list.comment.errors %}
        		<span class="errors">{{ form_list.comment.errors.as_text }}</span>
        	{% endif %}
        	<br />
        	{{ form_list.comment }}</p>
         <input type="hidden" name="next" value="/video/{{ video.vid }}/" />
-        <input type="submit" name="submit" class="submit-post" value="提交">
-    </form>
-    -->
-    <form id="post_comment" action="{% comment_form_target %}" method="post">{% csrf_token %}
-        {% for field in form_list %}
-            {% if field.is_hidden %}
-                {{ field }}
-            {% else %}
-                {% if field.errors %}{{ field.errors }}{% endif %}
-                <p
-                    {% if field.errors %} class="error"{% endif %}
-                    {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
-                    {{ field.label_tag }} <br /> {{ field }}
-                </p>
-            {% endif %}
-        {% endfor %}
-        <input type="hidden" name="next" value="/video/{{ video.vid }}" />
         <input type="submit" name="submit" class="submit-post" value="提交">
     </form>
 	</div>
