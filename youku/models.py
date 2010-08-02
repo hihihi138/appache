@@ -3,16 +3,7 @@ from django.db import models
 from datetime import datetime
 from tagging.fields import TagField
 from tagging.models import Tag
-
-class User(models.Model):
-    name = models.CharField(max_length=30)
-    reg_date = models.DateTimeField(default=datetime.now())
-    email = models.EmailField()
-    intro = models.TextField(max_length=4096)
-    website = models.URLField(blank=True)
-
-    def __unicode__(self):
-        return self.name
+from django.contrib.auth.models import User
 
 class Video(models.Model):
     title = models.CharField(max_length=100, verbose_name='题目')
@@ -31,6 +22,7 @@ class Video(models.Model):
     )
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, verbose_name='分类')
     tags = TagField()
+    intro = models.TextField(max_length=4096, verbose_name='视频简介')
 
     def get_tags(self):
 		return Tag.objects.get_for_object(self)
