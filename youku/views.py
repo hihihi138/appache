@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response
-from youku.models import Video, Log, User, PostedVideo
+from youku.models import Video, Log, User, PostedVideo, Suggestion
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from datetime import datetime
 from django.views.generic.list_detail import object_list
 from django.template import RequestContext
 from django.contrib.comments.models import Comment
 from tagging.views import tagged_object_list
-from youku.forms import PostVideoForm
+from youku.forms import PostVideoForm, SuggestionForm
 
 def video_list_page(request):
     videos = Video.objects.all()
@@ -55,3 +55,18 @@ def posted_videos(request):
 	
 def post_thanks(request):
 	return render_to_response('post_thanks.html')
+	
+def suggestion(request):
+	if request.method == 'POST':
+		form = SuggestionForm(request.POST)
+		if form.is_valid():
+			cd = form.cleaned_data
+			sug = Suggestion(name=cd['name'], email=cd['email'], content=cd['content'],)
+			sug.save()
+			return HttpResponseRedirect('/suggestion/thanks/')
+	else:
+		form = SuggestionForm()
+	return render_to_response('suggestion.html', {'form': form}, context_instance=RequestContext(request))
+	
+def suggestion_thanks(request):
+	return render_to_response('suggestion_thanks.html')

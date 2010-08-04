@@ -57,3 +57,12 @@ class PostedVideo(models.Model):
 	
 	def __unicode__(self):
 		return self.title
+		
+class Suggestion(models.Model):
+	name = models.CharField(max_length=100, verbose_name='昵称')
+	email = models.EmailField(verbose_name='电子邮箱')
+	content = models.TextField(max_length=4096)
+	time = models.DateTimeField(default=datetime.now())
+	
+	def __unicode__(self):
+		return self.name

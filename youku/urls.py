@@ -12,4 +12,6 @@ urlpatterns = patterns('',
     (r'^post/$', 'youku.views.post_video'),
     (r'^post/thanks/$', 'youku.views.post_thanks'),
     (r'^super/posts$', 'youku.views.posted_videos'),
+    (r'^suggestion/$', 'youku.views.suggestion'),
+    (r'^suggestion/thanks/$', 'youku.views.suggestion_thanks'),
 )
