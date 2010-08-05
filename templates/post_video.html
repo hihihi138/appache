@@ -5,6 +5,7 @@
 {% block menuPostVideo %}<li class="current_page_item"><a href="#">投递视频</a></li>{% endblock %}
 
 {% block content %}
+<div id="content">
     <div class="article">
     	<h3>请按照以下提示投递视频</h3>
         <form action="" method="post">{% csrf_token %}
@@ -27,4 +28,5 @@
 			<p class="submit"><input type="submit" value=" 确定 " /></p>
         </form>
     </div>
+</div>
 {% endblock %}

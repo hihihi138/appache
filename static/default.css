@@ -10,8 +10,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background: #d7f3ff url(images/img01.jpg) repeat-x;
-   	text-align: justify;
-	font: 15px Arial, Helvetica, sans-serif;
+	font: 15px 'Microsoft YaHei', 微软雅黑, 'Microsoft JhengHei', 华文黑体, STHeiti, Arial, Helvetica, sans-serif;
 	color: #626262;
 }
 
@@ -26,7 +25,7 @@ h1, h1 a, h2, h2 a, h3, h3 a {
 h1 {
 	letter-spacing: -1px;
 	font-size: 2.2em;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Microsoft YaHei', 微软雅黑, 'Microsoft JhengHei', 华文黑体, STHeiti, Arial, Helvetica, sans-serif;
 }
 
 h2 {
@@ -175,9 +174,17 @@ input.gsc-search-button {
   	padding: 0 20px 0 0;
 }
 
-#activation, #registration, #login, #logout, .article {
-	padding: 20px 20px 0 20px;
-	margin: 0 10px 0 20px;
+/* Content */
+
+#content {
+	float: left;
+	width: 610px;
+	margin: 0 0 0 20px;
+}
+
+.article {
+	margin: 0 0 15px 0;
+	padding: 20px 20px 10px 20px;
 	-moz-box-shadow: #33BBED 0 0 10px;
 	-webkit-box-shadow: #33BBED 0 0 10px;
 	border:1px solid #33BBED;
@@ -186,14 +193,6 @@ input.gsc-search-button {
 
 #authentication {
 	float: right;
-}
-
-/* Content */
-
-#content {
-	float: left;
-	width: 610px;
-	margin: 0 0 0 20px;
 }
 
 .post {
@@ -258,10 +257,6 @@ input.gsc-search-button {
 #comment h3 {
 	padding: 0 20px 10px 20px;
 }
-.comment p {
-	padding: 5px;
-	margin: 0;
-}
 .comment small {
 	padding: 5px;
 	margin: 0;
@@ -269,6 +264,25 @@ input.gsc-search-button {
 }
 #post_comment {
 	margin: 10px 20px 20px 20px;
+}
+.comment_container {
+	margin: 0 0 0 5px;
+}
+.avatar {
+	float: left;
+	margin: 10px 0 0 0
+}
+.comment_content {
+	padding: 0 10px 0 10px;
+	margin: 0;
+	overflow-y: hidden;
+}
+.comment_content p {
+	margin: 10px 0;
+	padding: 0;
+}
+.clear {
+	clear: both;
 }
 
 /* Sidebar */
@@ -305,6 +319,17 @@ input.gsc-search-button {
 	font-weight: normal;
 	font-size: 1.1em;
 	color: #302D26;
+}
+
+#sidebar h4 {
+	padding: 0 30px 0 20px;
+}
+
+.sidebar_text {
+	padding: 0 25px 10px 20px;
+	font-size: 0.85em;
+	text-indent: 2em;
+	font-weight: normal;
 }
 
 .tag_cloud {

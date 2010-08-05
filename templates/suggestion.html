@@ -5,6 +5,7 @@
 {% block menuSuggestion %}<li class="current_page_item"><a href="#">意见反馈</a></li>{% endblock %}
 
 {% block content %}
+<div id="content">
     <div class="article">
     	<h3>请留下您的宝贵意见!</h3>
         <form action="" method="post">{% csrf_token %}
@@ -23,4 +24,5 @@
 			<p class="submit"><input type="submit" value=" 提交 " /></p>
         </form>
     </div>
+</div>
 {% endblock %}
